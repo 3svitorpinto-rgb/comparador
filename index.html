@@ -2,54 +2,63 @@
 <html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <meta name="theme-color" content="#009946">
-    <title>🖤 BLACK FRIDAY 2025 - Comparador Telecomunicações Portugal</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>🖤 BLACK FRIDAY 2025 - Comparador Telecomunicações</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --green: #009946; --red: #E41E1E; --gold: #ffd700; --voda: #E60000; --orange: #FF6600; }
-        html, body { width: 100%; height: 100%; }
-        body { font-family: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; line-height: 1.6; }
-        .header { background: linear-gradient(90deg, var(--green) 0%, #000 50%, var(--red) 100%); padding: 50px 20px; text-align: center; border-bottom: 4px solid var(--gold); box-shadow: 0 0 60px rgba(255,215,0,0.4), inset 0 0 40px rgba(0,166,81,0.2); position: relative; overflow: hidden; }
-        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%); animation: rotate-bg 20s linear infinite; }
-        @keyframes rotate-bg { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .header h1 { font-size: clamp(28px, 7vw, 52px); background: linear-gradient(135deg, var(--gold) 0%, #ffff00 50%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900; letter-spacing: 3px; margin-bottom: 12px; text-shadow: 0 0 40px rgba(255,215,0,0.6); animation: glow-text 2.5s ease-in-out infinite; position: relative; z-index: 1; }
-        @keyframes glow-text { 0%, 100% { filter: drop-shadow(0 0 15px rgba(255,215,0,0.7)); text-shadow: 0 0 40px rgba(255,215,0,0.6); } 50% { filter: drop-shadow(0 0 30px rgba(255,215,0,1)); text-shadow: 0 0 60px rgba(255,215,0,0.9); } }
-        .header p { font-size: 15px; color: #bbb; margin-bottom: 12px; position: relative; z-index: 1; font-weight: 500; letter-spacing: 1px; }
-        .badge { display: inline-block; background: linear-gradient(135deg, var(--voda) 0%, #d32f2f 50%, var(--voda) 100%); color: var(--gold); padding: 14px 24px; border-radius: 30px; font-size: 12px; font-weight: 900; margin-top: 18px; border: 3px solid var(--gold); animation: pulse-intense 1.8s ease-in-out infinite; box-shadow: 0 0 25px rgba(255,215,0,0.5), inset 0 0 15px rgba(255,215,0,0.2); position: relative; z-index: 1; letter-spacing: 1px; }
-        @keyframes pulse-intense { 0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(255,215,0,0.5), inset 0 0 15px rgba(255,215,0,0.2); } 50% { transform: scale(1.08); box-shadow: 0 0 50px rgba(255,215,0,0.9), inset 0 0 25px rgba(255,215,0,0.4); } }
-        .controls { background: linear-gradient(180deg, rgba(0,166,81,0.15) 0%, rgba(0,166,81,0.08) 100%); border-bottom: 3px solid var(--green); padding: 22px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; box-shadow: inset 0 0 30px rgba(0,166,81,0.15), 0 4px 15px rgba(0,0,0,0.5); backdrop-filter: blur(5px); }
-        .btn { padding: 13px 20px; background: linear-gradient(135deg, var(--green), #06a047); color: var(--gold); border: 2px solid var(--gold); border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); text-decoration: none; display: inline-block; box-shadow: 0 6px 20px rgba(0,166,81,0.4), inset 0 1px 0 rgba(255,255,255,0.2); position: relative; overflow: hidden; }
-        .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: rgba(255,255,255,0.2); transition: left 0.3s; }
-        .btn:hover::before { left: 100%; }
-        .btn:hover { transform: translateY(-5px) scale(1.08); box-shadow: 0 12px 40px rgba(0,166,81,0.7), 0 0 30px rgba(255,215,0,0.6), inset 0 1px 0 rgba(255,255,255,0.3); filter: brightness(1.25); }
-        .btn.active { background: linear-gradient(135deg, var(--red), #b50c22); box-shadow: 0 0 40px rgba(230,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.2); }
-        .content { padding: 40px 20px; min-height: 65vh; background: linear-gradient(135deg, rgba(0,166,81,0.05) 0%, rgba(206,17,38,0.03) 100%); }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
-        .card { background: linear-gradient(135deg, rgba(0,166,81,0.18), rgba(206,17,38,0.1)); border: 2px solid var(--green); border-radius: 14px; padding: 24px; transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1); }
-        .card::before { content: ''; position: absolute; top: -100%; left: -100%; width: 300%; height: 300%; background: radial-gradient(circle 500px at 30% 30%, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0.1) 20%, transparent 80%); opacity: 0; transition: all 0.6s; }
-        .card:hover::before { opacity: 1; top: -50%; left: -50%; }
-        .card:hover { transform: translateY(-22px) scale(1.12) rotateX(10deg) rotateZ(4deg) perspective(1000px); box-shadow: 0 35px 80px rgba(0,166,81,0.6), 0 0 80px rgba(255,215,0,0.7), inset 0 0 40px rgba(255,215,0,0.25); border: 3px solid var(--gold); filter: brightness(1.4); }
-        .logo { width: 140px; height: 70px; object-fit: contain; margin: 0 auto 14px; filter: drop-shadow(0 4px 12px rgba(0,166,81,0.5)); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
-        .card:hover .logo { transform: scale(1.5) rotateY(20deg) drop-shadow(0 0 40px rgba(255,215,0,1)); }
-        .operator { font-size: 15px; font-weight: 900; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; text-align: center; letter-spacing: 2px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
-        .product-name { font-size: 14px; color: #e0e0e0; text-align: center; margin-bottom: 14px; font-weight: 600; letter-spacing: 0.5px; }
-        .price { font-size: 32px; color: var(--gold); font-weight: 900; text-align: center; margin: 14px 0; text-shadow: 0 0 25px rgba(255,215,0,0.7); animation: price-pulse 2.2s ease-in-out infinite; letter-spacing: -1px; }
-        @keyframes price-pulse { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.1); filter: brightness(1.1); } }
-        .card:hover .price { animation: price-flash 0.5s ease-in-out infinite; color: #ffff00; font-size: 35px; }
-        @keyframes price-flash { 0%, 100% { filter: brightness(1.2); text-shadow: 0 0 30px rgba(255,215,0,0.9); } 50% { filter: brightness(1.5); text-shadow: 0 0 50px rgba(255,215,0,1); } }
-        .specs { font-size: 12px; color: #d0d0d0; margin: 14px 0; padding: 12px; background: rgba(0,166,81,0.1); border-left: 3px solid var(--gold); border-radius: 6px; }
-        .specs li { margin-left: 20px; margin-bottom: 7px; transition: all 0.3s; }
-        .card:hover .specs li { color: #fff; text-shadow: 0 0 10px rgba(255,215,0,0.5); }
-        .btn-card { width: 100%; padding: 13px; margin: 7px 0; background: linear-gradient(135deg, var(--green), #06a047); color: var(--gold); border: 2px solid var(--gold); border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.4s; box-shadow: 0 6px 15px rgba(0,166,81,0.4); font-weight: 900; letter-spacing: 1px; }
-        .btn-card:hover { background: linear-gradient(135deg, var(--red), #d32f2f); transform: translateY(-3px); box-shadow: 0 0 30px rgba(230,0,0,0.7), 0 0 20px rgba(255,215,0,0.5); }
-        .footer { background: linear-gradient(180deg, #000 0%, rgba(0,166,81,0.1) 100%); border-top: 4px solid var(--red); padding: 35px 20px; text-align: center; font-size: 12px; color: #999; box-shadow: 0 -15px 40px rgba(0,166,81,0.2), inset 0 1px 0 rgba(255,255,255,0.1); }
-        .footer p { margin: 8px 0; font-weight: 500; letter-spacing: 0.5px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-touch-callout: none; user-select: none; }
+        :root { --green: #009946; --red: #E41E1E; --gold: #ffd700; --voda: #E60000; }
+        html, body { width: 100%; height: 100%; -webkit-font-smoothing: antialiased; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; -webkit-tap-highlight-color: transparent; }
+        input, button, a { -webkit-user-select: auto; user-select: auto; }
+        .header { background: linear-gradient(90deg, var(--green) 0%, #000 50%, var(--red) 100%); padding: 40px 16px; text-align: center; border-bottom: 4px solid var(--gold); box-shadow: 0 0 60px rgba(255,215,0,0.4); position: relative; }
+        .header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 30%, rgba(255,215,0,0.15) 0%, transparent 70%); pointer-events: none; }
+        .header h1 { font-size: clamp(24px, 7vw, 48px); background: linear-gradient(135deg, var(--gold) 0%, #ffff00 50%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 900; letter-spacing: 2px; margin-bottom: 8px; animation: glow-text 2.5s ease-in-out infinite; position: relative; z-index: 1; }
+        @keyframes glow-text { 0%, 100% { filter: drop-shadow(0 0 12px rgba(255,215,0,0.8)); } 50% { filter: drop-shadow(0 0 28px rgba(255,215,0,1)); } }
+        .header p { font-size: 13px; color: #bbb; margin-bottom: 12px; position: relative; z-index: 1; }
+        .badge { display: inline-block; background: linear-gradient(135deg, var(--voda), #d32f2f); color: var(--gold); padding: 12px 20px; border-radius: 25px; font-size: 11px; font-weight: 900; margin-top: 12px; border: 2px solid var(--gold); animation: pulse-intense 1.5s ease-in-out infinite; box-shadow: 0 0 25px rgba(255,215,0,0.6); position: relative; z-index: 1; }
+        @keyframes pulse-intense { 0%, 100% { transform: scale(1); box-shadow: 0 0 25px rgba(255,215,0,0.6); } 50% { transform: scale(1.08); box-shadow: 0 0 45px rgba(255,215,0,0.9); } }
+        .controls { background: rgba(0,166,81,0.15); border-bottom: 3px solid var(--green); padding: 14px 10px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .btn { padding: 10px 14px; background: linear-gradient(135deg, var(--green), #06a047); color: var(--gold); border: 2px solid var(--gold); border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 11px; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,166,81,0.3); }
+        .btn:active { transform: scale(0.96); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,166,81,0.6), 0 0 25px rgba(255,215,0,0.5); filter: brightness(1.25); }
+        .btn.active { background: linear-gradient(135deg, var(--red), #b50c22); box-shadow: 0 0 35px rgba(230,0,0,0.7); }
+        .content { padding: 20px 12px; min-height: 65vh; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 18px; }
+        .card { background: linear-gradient(135deg, rgba(0,166,81,0.2), rgba(206,17,38,0.12)); border: 2px solid var(--green); border-radius: 14px; padding: 18px; cursor: pointer; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .card::before { content: ''; position: absolute; top: -150%; left: -150%; width: 400%; height: 400%; background: radial-gradient(circle, rgba(255,215,0,0.6) 0%, rgba(255,215,0,0.2) 30%, transparent 80%); opacity: 0; transition: all 0.6s; }
+        .card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(255,215,0,0.1) 0%, transparent 50%, rgba(0,166,81,0.1) 100%); opacity: 0; transition: opacity 0.4s; }
+        .card.active::before, .card.active::after, .card:hover::before, .card:hover::after { opacity: 1; }
+        .card.active::before, .card:hover::before { top: -75%; left: -75%; }
+        .card.active, .card:hover { transform: translateY(-20px) scale(1.12) rotateX(12deg) rotateZ(4deg) perspective(1000px); box-shadow: 0 35px 80px rgba(0,166,81,0.7), 0 0 80px rgba(255,215,0,0.7), inset 0 0 40px rgba(255,215,0,0.3); border: 3px solid var(--gold); filter: brightness(1.4) contrast(1.15); }
+        .logo { width: 130px; height: 65px; object-fit: contain; margin: 0 auto 12px; filter: drop-shadow(0 4px 12px rgba(0,166,81,0.5)); transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; }
+        .card.active .logo, .card:hover .logo { transform: scale(1.45) rotateY(20deg) drop-shadow(0 0 40px rgba(255,215,0,1)); }
+        .operator { font-size: 13px; font-weight: 900; color: var(--gold); text-transform: uppercase; margin-bottom: 8px; text-align: center; letter-spacing: 1.5px; pointer-events: none; text-shadow: 0 2px 8px rgba(0,0,0,0.6); }
+        .product-name { font-size: 12px; color: #e0e0e0; text-align: center; margin-bottom: 10px; font-weight: 600; pointer-events: none; }
+        .price { font-size: 28px; color: var(--gold); font-weight: 900; text-align: center; margin: 10px 0; text-shadow: 0 0 25px rgba(255,215,0,0.7); animation: price-pulse 2s ease-in-out infinite; pointer-events: none; }
+        @keyframes price-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .card.active .price, .card:hover .price { animation: price-flash 0.4s ease-in-out infinite; color: #ffff00; font-size: 30px; }
+        @keyframes price-flash { 0%, 100% { filter: brightness(1.3); } 50% { filter: brightness(1.6); } }
+        .specs { font-size: 11px; color: #d0d0d0; margin: 10px 0; padding: 12px; background: rgba(0,166,81,0.12); border-left: 4px solid var(--gold); border-radius: 6px; pointer-events: none; }
+        .specs li { margin-left: 18px; margin-bottom: 5px; transition: all 0.3s; }
+        .card.active .specs li, .card:hover .specs li { color: #fff; text-shadow: 0 0 10px rgba(255,215,0,0.6); }
+        .btn-card { width: 100%; padding: 12px; margin: 6px 0; background: linear-gradient(135deg, var(--green), #06a047); color: var(--gold); border: 2px solid var(--gold); border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 11px; transition: all 0.3s; box-shadow: 0 5px 14px rgba(0,166,81,0.4); font-weight: 900; -webkit-user-select: auto; user-select: auto; }
+        .btn-card:active { background: linear-gradient(135deg, var(--red), #d32f2f); transform: scale(0.95); box-shadow: 0 0 30px rgba(230,0,0,0.7); }
+        .btn-card:hover { background: linear-gradient(135deg, var(--red), #d32f2f); transform: translateY(-2px); box-shadow: 0 0 30px rgba(230,0,0,0.7); }
+        .footer { background: linear-gradient(180deg, #000 0%, rgba(0,166,81,0.1) 100%); border-top: 4px solid var(--red); padding: 25px 16px; text-align: center; font-size: 10px; color: #999; box-shadow: 0 -10px 35px rgba(0,166,81,0.3); }
+        .footer p { margin: 6px 0; font-weight: 500; }
         .footer strong { color: var(--gold); }
         @media (max-width: 768px) { 
-            .grid { grid-template-columns: 1fr; gap: 18px; }
-            .card:hover { transform: translateY(-12px) scale(1.04); }
-            .header h1 { font-size: 32px; }
+            .grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+            .btn { padding: 9px 12px; font-size: 10px; }
+        }
+        @media (max-width: 480px) { 
+            .grid { grid-template-columns: 1fr; gap: 12px; }
+            .controls { gap: 6px; padding: 12px 8px; }
+            .btn { padding: 9px 11px; font-size: 10px; }
+            .card { padding: 14px; }
         }
     </style>
 </head>
@@ -57,17 +66,17 @@
     <div class="header">
         <h1>🖤 BLACK FRIDAY 2025 🖤</h1>
         <p>Comparador Telecomunicações Portugal</p>
-        <div class="badge">✨ MODEM RETRO • EFEITOS WOW EPICS • +45 PRODUTOS ✨</div>
+        <div class="badge">✨ MODEM RETRO • WOW EFFECTS EPIC ✨</div>
     </div>
 
     <div class="controls">
-        <button class="btn active" onclick="filter('all')">📊 Todos os Produtos</button>
-        <button class="btn" onclick="filter('internet')">🌐 Internet Fibra</button>
-        <button class="btn" onclick="filter('voz')">📱 Voz & Dados</button>
-        <button class="btn" onclick="filter('tv')">📺 TV Paga</button>
-        <button class="btn" onclick="filter('combo')">📦 Combos Triple</button>
-        <button class="btn" style="background:linear-gradient(135deg,var(--gold),#cc9900);color:#000;font-weight:900" onclick="openConsult()">💼 Consulta Grátis</button>
-        <button class="btn" style="background:linear-gradient(135deg,#0084ff,#0050b3);font-weight:900" id="soundBtn" onclick="toggleSound()">📞 MODEM SOM</button>
+        <button class="btn active" onclick="filter('all')">📊 Todos</button>
+        <button class="btn" onclick="filter('internet')">🌐 Internet</button>
+        <button class="btn" onclick="filter('voz')">📱 Voz</button>
+        <button class="btn" onclick="filter('tv')">📺 TV</button>
+        <button class="btn" onclick="filter('combo')">📦 Combos</button>
+        <button class="btn" style="background:linear-gradient(135deg,var(--gold),#cc9900);color:#000;font-weight:900" onclick="window.location.href='https://m.me/'">💼 Consulta</button>
+        <button class="btn" style="background:linear-gradient(135deg,#0084ff,#0050b3)" id="soundBtn" onclick="toggleSound()">📞 SOM</button>
     </div>
 
     <div class="content">
@@ -76,67 +85,66 @@
 
     <div class="footer">
         <p><strong>© 2025 VITOR PINTO PRODUCTIONS</strong></p>
-        <p>🖤 BLACK FRIDAY 2025 | Som Modem Retro Authentico | Efeitos WOW Epicos</p>
-        <p>Comparador Independente de Telecomunicações | +45 Produtos | 9 Operadoras</p>
+        <p>🖤 BLACK FRIDAY 2025 | Som Modem Retro Authéntico | Efeitos WOW Épicos</p>
         <p>MEO • NOS • VODAFONE • DIGI • NOWO • AMIGO • WOO • UZO • YORN</p>
     </div>
 
     <script>
         const products = [
-            {op:"MEO",name:"Internet 1Gbps FTTH",cat:"internet",price:"29,99€",specs:["✓ Fibra FTTH Ultra","✓ Router Wifi 6","✓ Suporte 24/7"]},
-            {op:"MEO",name:"Combo Triple",cat:"combo",price:"42,49€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 150+ Canais"]},
-            {op:"MEO",name:"Combo Premium",cat:"combo",price:"69,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K 180ch"]},
-            {op:"MEO",name:"Combo Elite",cat:"combo",price:"89,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K MAX"]},
-            {op:"MEO",name:"Voz 200GB",cat:"voz",price:"9,99€",specs:["✓ Ilimitado","✓ SMS Ilimitados","✓ 200GB Dados"]},
-            {op:"MEO",name:"TV Família",cat:"tv",price:"25,99€",specs:["✓ +150 Canais","✓ Gravação HD","✓ VOD Incluído"]},
-            {op:"NOS",name:"Internet 1Gbps Fibra",cat:"internet",price:"34,49€",specs:["✓ Fibra Prémio","✓ Router Wifi 5","✓ Congelado 2025"]},
-            {op:"NOS",name:"Combo Triple",cat:"combo",price:"42,49€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 180 Canais"]},
-            {op:"NOS",name:"Combo Plus",cat:"combo",price:"74,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K 200ch"]},
-            {op:"NOS",name:"Combo Elite",cat:"combo",price:"94,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K MAX+"]},
-            {op:"NOS",name:"Voz 5GB",cat:"voz",price:"8,99€",specs:["✓ Ilimitado","✓ SMS Ilimitados","✓ 5GB Dados"]},
-            {op:"NOS",name:"TV Premium",cat:"tv",price:"34,49€",specs:["✓ +180 Canais","✓ 4K Premium","✓ Gravação"]},
-            {op:"VODAFONE",name:"Internet 1Gbps",cat:"internet",price:"29,50€",specs:["✓ Fibra Pura","✓ Modem Incluído","✓ Sem Contrato"]},
-            {op:"VODAFONE",name:"Combo RED",cat:"combo",price:"39,99€",specs:["✓ Net 500Mbps","✓ Voz Ilimitado","✓ TV 140ch"]},
-            {op:"VODAFONE",name:"Combo Plus",cat:"combo",price:"64,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K"]},
-            {op:"VODAFONE",name:"Combo Max",cat:"combo",price:"84,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K Premium"]},
-            {op:"VODAFONE",name:"Voz 5GB",cat:"voz",price:"7,99€",specs:["✓ Ilimitado","✓ SMS Ilimitados","✓ 5GB Dados"]},
-            {op:"VODAFONE",name:"TV 140ch",cat:"tv",price:"29,50€",specs:["✓ +140 Canais","✓ Gravação HD","✓ VOD"]},
-            {op:"DIGI",name:"Internet 1Gbps",cat:"internet",price:"10,00€",specs:["✓ Fibra FTTH","✓ Super Rápida","✓ ⭐ MELHOR PREÇO"]},
-            {op:"DIGI",name:"Internet 10Gbps",cat:"internet",price:"15,00€",specs:["✓ Fibra 10Gbps","✓ Ultrarrápida","✓ Premium"]},
-            {op:"DIGI",name:"Combo Triple",cat:"combo",price:"26,00€",specs:["✓ Net 1Gbps","✓ 50GB Móvel","✓ TV 60ch"]},
-            {op:"DIGI",name:"Combo Plus",cat:"combo",price:"49,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 100ch"]},
-            {op:"DIGI",name:"Combo Pro",cat:"combo",price:"69,99€",specs:["✓ Net 10Gbps","✓ Voz Premium","✓ TV 4K"]},
-            {op:"NOWO",name:"Internet 1Gbps",cat:"internet",price:"20,99€",specs:["✓ Fibra Completa","✓ Router Wifi 5","✓ Sem Taxa"]},
-            {op:"NOWO",name:"Combo Triple",cat:"combo",price:"45,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV"]},
-            {op:"NOWO",name:"Combo Plus",cat:"combo",price:"59,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K"]},
-            {op:"NOWO",name:"Combo Elite",cat:"combo",price:"79,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K MAX"]},
-            {op:"AMIGO",name:"Móvel 100GB",cat:"voz",price:"8,00€",specs:["✓ 100GB Dados","✓ Ilimitado","✓ Acumula Dados"]},
-            {op:"AMIGO",name:"Móvel Ilimitado",cat:"voz",price:"10,00€",specs:["✓ Ilimitado Total","✓ Prioridade","✓ Rede MEO"]},
-            {op:"AMIGO",name:"Combo 2 Linhas",cat:"combo",price:"18,00€",specs:["✓ 2x 100GB","✓ Ilimitado","✓ Máxima Prioridade"]},
-            {op:"WOO",name:"Móvel 100GB",cat:"voz",price:"8,00€",specs:["✓ 100GB Dados","✓ Sem Fidelização","✓ Rede MEO"]},
-            {op:"WOO",name:"Combo Fibra+Móvel",cat:"combo",price:"25,00€",specs:["✓ Fibra 1Gbps","✓ Móvel 100GB","✓ Sem Contrato"]},
-            {op:"WOO",name:"Combo Plus",cat:"combo",price:"44,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ Sem Contrato"]},
-            {op:"WOO",name:"Combo Max",cat:"combo",price:"64,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 80ch"]},
-            {op:"UZO",name:"Móvel 200GB",cat:"voz",price:"10,00€",specs:["✓ 200GB Acumulável","✓ Ilimitado","✓ Rede MEO"]},
-            {op:"UZO",name:"Combo Triple",cat:"combo",price:"35,00€",specs:["✓ Fibra 1Gbps","✓ Móvel 200GB","✓ TV 70ch"]},
-            {op:"UZO",name:"Combo Plus",cat:"combo",price:"54,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 100ch"]},
-            {op:"UZO",name:"Combo Elite",cat:"combo",price:"74,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 4K"]},
-            {op:"YORN",name:"Internet 1Gbps",cat:"internet",price:"24,99€",specs:["✓ Fibra 24/7","✓ Router Wifi 5","✓ Suporte Premium"]},
-            {op:"YORN",name:"Móvel 6GB",cat:"voz",price:"10,99€",specs:["✓ 6GB Dados","✓ Ilimitado","✓ Roaming EU"]},
-            {op:"YORN",name:"Combo Triple",cat:"combo",price:"48,99€",specs:["✓ Fibra 1Gbps","✓ Móvel 10GB","✓ TV 100ch"]},
-            {op:"YORN",name:"Combo Plus",cat:"combo",price:"69,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 4K"]}
+            {op:"MEO",name:"Internet 1Gbps FTTH",cat:"internet",price:"29,99€",specs:["✓ Fibra Ultra","✓ Router Wifi 6","✓ Suporte 24/7"],url:"https://www.meo.pt"},
+            {op:"MEO",name:"Combo Triple",cat:"combo",price:"42,49€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 150+"],url:"https://www.meo.pt"},
+            {op:"MEO",name:"Combo Premium",cat:"combo",price:"69,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K"],url:"https://www.meo.pt"},
+            {op:"MEO",name:"Combo Elite",cat:"combo",price:"89,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K MAX"],url:"https://www.meo.pt"},
+            {op:"MEO",name:"Voz 200GB",cat:"voz",price:"9,99€",specs:["✓ Ilimitado Nacional","✓ SMS Ilimitados","✓ 200GB Dados"],url:"https://www.meo.pt"},
+            {op:"MEO",name:"TV Família",cat:"tv",price:"25,99€",specs:["✓ +150 Canais","✓ Gravação HD","✓ VOD Incluído"],url:"https://www.meo.pt"},
+            {op:"NOS",name:"Internet 1Gbps Fibra",cat:"internet",price:"34,49€",specs:["✓ Fibra Premium","✓ Router Wifi 5","✓ Congelado 2025"],url:"https://www.nos.pt"},
+            {op:"NOS",name:"Combo Triple",cat:"combo",price:"42,49€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 180 Canais"],url:"https://www.nos.pt"},
+            {op:"NOS",name:"Combo Plus",cat:"combo",price:"74,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K 200ch"],url:"https://www.nos.pt"},
+            {op:"NOS",name:"Combo Elite",cat:"combo",price:"94,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K MAX+"],url:"https://www.nos.pt"},
+            {op:"NOS",name:"Voz 5GB",cat:"voz",price:"8,99€",specs:["✓ Ilimitado Nacional","✓ SMS Ilimitados","✓ 5GB Dados"],url:"https://www.nos.pt"},
+            {op:"NOS",name:"TV Premium",cat:"tv",price:"34,49€",specs:["✓ +180 Canais","✓ Qualidade 4K","✓ Gravação"],url:"https://www.nos.pt"},
+            {op:"VODAFONE",name:"Internet 1Gbps",cat:"internet",price:"29,50€",specs:["✓ Fibra Pura","✓ Modem Incluído","✓ Sem Contrato"],url:"https://www.vodafone.pt"},
+            {op:"VODAFONE",name:"Combo RED",cat:"combo",price:"39,99€",specs:["✓ Net 500Mbps","✓ Voz Ilimitado","✓ TV 140ch"],url:"https://www.vodafone.pt"},
+            {op:"VODAFONE",name:"Combo Plus",cat:"combo",price:"64,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K"],url:"https://www.vodafone.pt"},
+            {op:"VODAFONE",name:"Combo Max",cat:"combo",price:"84,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K Premium"],url:"https://www.vodafone.pt"},
+            {op:"VODAFONE",name:"Voz 5GB",cat:"voz",price:"7,99€",specs:["✓ Ilimitado Nacional","✓ SMS Ilimitados","✓ 5GB Dados"],url:"https://www.vodafone.pt"},
+            {op:"VODAFONE",name:"TV 140ch",cat:"tv",price:"29,50€",specs:["✓ +140 Canais","✓ Gravação HD","✓ VOD"],url:"https://www.vodafone.pt"},
+            {op:"DIGI",name:"Internet 1Gbps",cat:"internet",price:"10,00€",specs:["✓ Fibra FTTH","✓ Super Rápida","✓ ⭐ MELHOR PREÇO"],url:"https://www.digi.pt"},
+            {op:"DIGI",name:"Internet 10Gbps",cat:"internet",price:"15,00€",specs:["✓ Fibra 10Gbps","✓ Ultrarrápida","✓ Premium"],url:"https://www.digi.pt"},
+            {op:"DIGI",name:"Combo Triple",cat:"combo",price:"26,00€",specs:["✓ Net 1Gbps","✓ 50GB Móvel","✓ TV 60ch"],url:"https://www.digi.pt"},
+            {op:"DIGI",name:"Combo Plus",cat:"combo",price:"49,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 100ch"],url:"https://www.digi.pt"},
+            {op:"DIGI",name:"Combo Pro",cat:"combo",price:"69,99€",specs:["✓ Net 10Gbps","✓ Voz Premium","✓ TV 4K"],url:"https://www.digi.pt"},
+            {op:"NOWO",name:"Internet 1Gbps",cat:"internet",price:"20,99€",specs:["✓ Fibra Completa","✓ Router Wifi 5","✓ Sem Taxa"],url:"https://www.nowo.pt"},
+            {op:"NOWO",name:"Combo Triple",cat:"combo",price:"45,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV"],url:"https://www.nowo.pt"},
+            {op:"NOWO",name:"Combo Plus",cat:"combo",price:"59,99€",specs:["✓ Net 1Gbps","✓ Voz Ilimitado","✓ TV 4K"],url:"https://www.nowo.pt"},
+            {op:"NOWO",name:"Combo Elite",cat:"combo",price:"79,99€",specs:["✓ Net 1Gbps","✓ Voz Premium","✓ TV 4K MAX"],url:"https://www.nowo.pt"},
+            {op:"AMIGO",name:"Móvel 100GB",cat:"voz",price:"8,00€",specs:["✓ 100GB Dados","✓ Ilimitado Nacional","✓ Acumula Dados"],url:"https://www.amigo.pt"},
+            {op:"AMIGO",name:"Móvel Ilimitado",cat:"voz",price:"10,00€",specs:["✓ Ilimitado Total","✓ Prioridade","✓ Rede MEO"],url:"https://www.amigo.pt"},
+            {op:"AMIGO",name:"Combo 2 Linhas",cat:"combo",price:"18,00€",specs:["✓ 2x 100GB","✓ Ilimitado","✓ Máxima Prioridade"],url:"https://www.amigo.pt"},
+            {op:"WOO",name:"Móvel 100GB",cat:"voz",price:"8,00€",specs:["✓ 100GB Dados","✓ Sem Fidelização","✓ Rede MEO"],url:"https://www.woo.pt"},
+            {op:"WOO",name:"Combo Fibra+Móvel",cat:"combo",price:"25,00€",specs:["✓ Fibra 1Gbps","✓ Móvel 100GB","✓ Sem Contrato"],url:"https://www.woo.pt"},
+            {op:"WOO",name:"Combo Plus",cat:"combo",price:"44,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ Sem Contrato"],url:"https://www.woo.pt"},
+            {op:"WOO",name:"Combo Max",cat:"combo",price:"64,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 80ch"],url:"https://www.woo.pt"},
+            {op:"UZO",name:"Móvel 200GB",cat:"voz",price:"10,00€",specs:["✓ 200GB Acumulável","✓ Ilimitado","✓ Rede MEO"],url:"https://www.uzo.pt"},
+            {op:"UZO",name:"Combo Triple",cat:"combo",price:"35,00€",specs:["✓ Fibra 1Gbps","✓ Móvel 200GB","✓ TV 70ch"],url:"https://www.uzo.pt"},
+            {op:"UZO",name:"Combo Plus",cat:"combo",price:"54,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 100ch"],url:"https://www.uzo.pt"},
+            {op:"UZO",name:"Combo Elite",cat:"combo",price:"74,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 4K"],url:"https://www.uzo.pt"},
+            {op:"YORN",name:"Internet 1Gbps",cat:"internet",price:"24,99€",specs:["✓ Fibra 24/7","✓ Router Wifi 5","✓ Suporte Premium"],url:"https://www.yorn.pt"},
+            {op:"YORN",name:"Móvel 6GB",cat:"voz",price:"10,99€",specs:["✓ 6GB Dados","✓ Ilimitado","✓ Roaming EU"],url:"https://www.yorn.pt"},
+            {op:"YORN",name:"Combo Triple",cat:"combo",price:"48,99€",specs:["✓ Fibra 1Gbps","✓ Móvel 10GB","✓ TV 100ch"],url:"https://www.yorn.pt"},
+            {op:"YORN",name:"Combo Plus",cat:"combo",price:"69,99€",specs:["✓ Fibra 1Gbps","✓ Móvel Ilimitado","✓ TV 4K"],url:"https://www.yorn.pt"}
         ];
 
         const logos = {
-            "MEO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%23009946' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EMEO%3C/text%3E%3C/svg%3E",
-            "NOS": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%23E41E1E' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3ENOS%3C/text%3E%3C/svg%3E",
-            "VODAFONE": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%23E60000' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='22' fill='%23fff' font-weight='900'%3EVODA%3C/text%3E%3C/svg%3E",
-            "DIGI": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%23FF6600' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EDIGI%3C/text%3E%3C/svg%3E",
-            "NOWO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%231C1C1C' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='24' fill='%2300D9FF' font-weight='900'%3ENOWO%3C/text%3E%3C/svg%3E",
-            "AMIGO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%230058C4' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='24' fill='%23fff' font-weight='900'%3EAMIGO%3C/text%3E%3C/svg%3E",
-            "WOO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%23943EFF' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EWOO%3C/text%3E%3C/svg%3E",
-            "UZO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%23001F3F' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='28' fill='%2300FF00' font-weight='900'%3EUZO%3C/text%3E%3C/svg%3E",
-            "YORN": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Crect fill='%23003DA5' width='140' height='70' rx='8'/%3E%3Ctext x='70' y='48' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EYORN%3C/text%3E%3C/svg%3E"
+            "MEO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%23009946' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EMEO%3C/text%3E%3C/svg%3E",
+            "NOS": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%23E41E1E' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3ENOS%3C/text%3E%3C/svg%3E",
+            "VODAFONE": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%23E60000' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='22' fill='%23fff' font-weight='900'%3EVODA%3C/text%3E%3C/svg%3E",
+            "DIGI": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%23FF6600' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EDIGI%3C/text%3E%3C/svg%3E",
+            "NOWO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%231C1C1C' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='24' fill='%2300D9FF' font-weight='900'%3ENOWO%3C/text%3E%3C/svg%3E",
+            "AMIGO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%230058C4' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='24' fill='%23fff' font-weight='900'%3EAMIGO%3C/text%3E%3C/svg%3E",
+            "WOO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%23943EFF' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EWOO%3C/text%3E%3C/svg%3E",
+            "UZO": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%23001F3F' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='28' fill='%2300FF00' font-weight='900'%3EUZO%3C/text%3E%3C/svg%3E",
+            "YORN": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Crect fill='%23003DA5' width='120' height='60' rx='8'/%3E%3Ctext x='60' y='42' text-anchor='middle' font-size='28' fill='%23fff' font-weight='900'%3EYORN%3C/text%3E%3C/svg%3E"
         };
 
         let soundOn = false;
@@ -145,18 +153,7 @@
             try {
                 const ac = new (window.AudioContext || window.webkitAudioContext)();
                 const t = ac.currentTime;
-                const seq = [
-                    {f:350,d:0.3},{f:440,d:0.3},{f:0,d:0.2},
-                    {f:697,d:0.08},{f:1209,d:0.08},{f:0,d:0.05},
-                    {f:697,d:0.08},{f:1336,d:0.08},{f:0,d:0.05},
-                    {f:770,d:0.08},{f:1209,d:0.08},{f:0,d:0.05},
-                    {f:852,d:0.08},{f:1336,d:0.08},{f:0,d:0.05},
-                    {f:941,d:0.08},{f:1209,d:0.08},{f:0,d:0.1},
-                    {f:1200,d:0.15},{f:0,d:0.05},
-                    {f:2400,d:0.1},{f:0,d:0.1},
-                    {f:1500,d:0.2},{f:0,d:0.05},
-                    {f:350,d:0.1},{f:440,d:0.1},{f:350,d:0.1}
-                ];
+                const seq = [{f:350,d:0.3},{f:440,d:0.3},{f:0,d:0.2},{f:697,d:0.1},{f:1209,d:0.1},{f:0,d:0.05},{f:697,d:0.1},{f:1336,d:0.1},{f:0,d:0.05},{f:770,d:0.1},{f:1209,d:0.1},{f:0,d:0.05},{f:852,d:0.1},{f:1336,d:0.1},{f:0,d:0.05},{f:941,d:0.1},{f:1209,d:0.1},{f:0,d:0.1},{f:1200,d:0.15},{f:0,d:0.05},{f:2400,d:0.1},{f:0,d:0.1},{f:1500,d:0.2}];
                 let time = t;
                 seq.forEach(n => {
                     if(n.f === 0) { time += n.d; return; }
@@ -177,32 +174,37 @@
 
         function toggleSound() {
             soundOn = !soundOn;
-            const btn = document.getElementById('soundBtn');
-            btn.textContent = soundOn ? '📞 MODEM ON' : '📞 MODEM SOM';
-            btn.classList.toggle('active');
+            document.getElementById('soundBtn').textContent = soundOn ? '📞 ON' : '📞 SOM';
+            document.getElementById('soundBtn').classList.toggle('active');
             playModemSound();
-            if (soundOn) loopSound();
-        }
-
-        function loopSound() {
-            if (!soundOn) return;
-            playModemSound();
-            setTimeout(loopSound, 8500);
+            if (soundOn) {
+                const loopSound = () => {
+                    if (soundOn) {
+                        playModemSound();
+                        setTimeout(loopSound, 8500);
+                    }
+                };
+                setTimeout(loopSound, 8500);
+            }
         }
 
         function render(cat) {
             const f = cat === 'all' ? products : products.filter(p => p.cat === cat);
             const html = f.map((p,i) => `
-                <div class="card" style="animation-delay:${i*40}ms">
+                <div class="card" ontouchstart="this.classList.add('active')" ontouchend="this.classList.remove('active')" onclick="openLink('${p.url}')" style="animation-delay:${i*30}ms">
                     <img src="${logos[p.op]}" alt="${p.op}" class="logo">
                     <div class="operator">${p.op}</div>
                     <div class="product-name">${p.name}</div>
                     <div class="price">${p.price}/mês</div>
                     <ul class="specs">${p.specs.map(s => `<li>${s}</li>`).join('')}</ul>
-                    <a href="https://www.${p.op.toLowerCase()}.pt" target="_blank" class="btn-card">🔗 Ver Website</a>
+                    <a href="${p.url}" target="_blank" class="btn-card">🔗 Ver Website</a>
                 </div>
             `).join('');
             document.getElementById('grid').innerHTML = html;
+        }
+
+        function openLink(url) {
+            window.open(url, '_blank');
         }
 
         function filter(c) {
@@ -211,14 +213,7 @@
             render(c);
         }
 
-        function openConsult() {
-            window.open('https://m.me/', '_blank');
-            alert('📱 Contacte-nos no Messenger para consulta personalizada!\n\n💼 Análise de Contrato\n💰 Renegociação de Tarifa\n📄 Gestão de Rescisão\n⚖️ Proteção de Direitos');
-        }
-
         render('all');
     </script>
 </body>
 </html>
-
-
