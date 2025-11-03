@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#009946">
+    <title>Comparador Telecomunicações 2025 - Black Friday | Vitor Pinto Productions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-green: #00a651; --primary-red: #ce1126; --primary-gold: #ffd700; --doc-purple: #9c27b0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #000; color: #fff; }
+        .container { max-width: 100%; }
+        .header { background: linear-gradient(90deg, #009946 0%, #000 50%, #E41E1E 100%); padding: 20px; text-align: center; border-bottom: 3px solid var(--primary-gold); animation: slideInDown 1s ease-out; }
+        .header h1 { font-size: 32px; background: linear-gradient(135deg, var(--primary-gold), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 8px; }
+        .header p { font-size: 12px; color: #aaa; }
+        .update-badge { display: inline-block; background: linear-gradient(135deg, #E60000, #d32f2f); color: var(--primary-gold); padding: 8px 16px; border-radius: 20px; font-size: 10px; font-weight: 900; margin-top: 10px; border: 2px solid var(--primary-gold); animation: pulse-intense 2s ease-in-out infinite; }
+        .controls { background: rgba(0, 166, 81, 0.1); border-bottom: 2px solid var(--primary-green); padding: 15px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+        .btn { padding: 8px 15px; background: linear-gradient(135deg, #009946, #06a047); color: var(--primary-gold); border: 2px solid var(--primary-gold); border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 11px; transition: all 0.3s; text-decoration: none; display: inline-block; }
+        .btn:hover { transform: translateY(-2px); }
+        .btn.active { background: linear-gradient(135deg, #E41E1E, #b50c22); }
+        .btn.consultant { background: linear-gradient(135deg, var(--primary-gold), #cc9900); color: #000; font-weight: 700; }
+        .btn.black-friday { background: linear-gradient(135deg, #E60000, #d32f2f); color: var(--primary-gold); font-weight: 900; }
+        .btn.documentation { background: linear-gradient(135deg, var(--doc-purple), #6a1b9a); color: var(--primary-gold); font-weight: 700; }
+        .content { padding: 20px; }
+        .black-friday-section, .documentation-section { border-radius: 12px; padding: 20px; margin-bottom: 20px; animation: slideIn 0.8s ease-out; }
+        .black-friday-section { background: linear-gradient(135deg, rgba(230, 0, 0, 0.2), rgba(211, 47, 47, 0.1)); border: 3px solid #E60000; }
+        .documentation-section { background: linear-gradient(135deg, rgba(156, 39, 176, 0.2), rgba(106, 27, 154, 0.1)); border: 3px solid var(--doc-purple); }
+        .black-friday-section h2, .documentation-section h2 { color: var(--primary-gold); text-align: center; margin-bottom: 15px; font-size: 18px; text-transform: uppercase; letter-spacing: 2px; }
+        .bfcampaigns-grid, .doc-services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .bf-card, .doc-service-card { background: linear-gradient(135deg, rgba(230, 0, 0, 0.15), rgba(211, 47, 47, 0.05)); border: 2px solid #E60000; border-radius: 10px; padding: 15px; animation: zoomIn 1s ease-out both; }
+        .doc-service-card { background: linear-gradient(135deg, rgba(156, 39, 176, 0.15), rgba(106, 27, 154, 0.05)); border: 2px solid var(--doc-purple); animation: rotateIn 0.8s ease-out both; }
+        .bf-card:hover { animation: cardFlip 0.8s ease-in-out, pulse-intense 0.6s ease-in-out infinite; transform: scale(1.15) rotateZ(-3deg); box-shadow: 0 0 50px #E60000, 0 0 80px rgba(230, 0, 0, 0.6), inset 0 0 30px rgba(255, 215, 0, 0.3); filter: brightness(1.4); }
+        .doc-service-card:hover { animation: cardPulseWow 0.6s ease-in-out; transform: translateY(-15px) scale(1.1) rotateZ(2deg); box-shadow: 0 0 50px var(--doc-purple), 0 0 80px rgba(156, 39, 176, 0.6), inset 0 0 30px rgba(255, 215, 0, 0.2); filter: brightness(1.3); }
+        .operator-logo, .bf-logo, .doc-logo { width: 100px; height: 60px; object-fit: contain; display: block; margin: 0 auto 10px; filter: drop-shadow(0 2px 5px rgba(0, 166, 81, 0.3)); transition: all 0.3s; }
+        .bf-card:hover .bf-logo, .doc-service-card:hover .doc-logo { filter: drop-shadow(0 4px 15px rgba(255, 215, 0, 0.6)) brightness(1.15); transform: scale(1.35) rotate(-2deg); }
+        .bf-operator, .doc-title { font-size: 13px; font-weight: 900; color: var(--primary-gold); margin-bottom: 8px; text-transform: uppercase; }
+        .bf-discount { background: #E60000; color: var(--primary-gold); padding: 8px; border-radius: 6px; font-size: 10px; font-weight: 900; text-align: center; margin-bottom: 8px; }
+        .bf-offer, .doc-description { font-size: 10px; color: #ddd; line-height: 1.8; margin-bottom: 10px; white-space: pre-wrap; }
+        .bf-dates { font-size: 9px; color: #E60000; font-weight: 700; margin-bottom: 8px; }
+        .doc-list { font-size: 9px; color: #ccc; margin-bottom: 10px; }
+        .doc-list li { margin-left: 15px; margin-bottom: 5px; }
+        .bf-btn, .doc-btn { width: 100%; padding: 10px; background: #E60000; color: var(--primary-gold); border: 2px solid var(--primary-gold); border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 10px; text-decoration: none; text-align: center; display: block; transition: all 0.3s; margin-bottom: 8px; }
+        .doc-btn { background: var(--doc-purple); }
+        .helpful-links { background: rgba(0, 166, 81, 0.1); border: 2px solid var(--primary-green); border-radius: 8px; padding: 15px; margin-bottom: 20px; text-align: center; }
+        .helpful-links h3 { color: var(--primary-gold); margin-bottom: 10px; font-size: 13px; }
+        .helpful-links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 8px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .product-card { background: linear-gradient(135deg, rgba(0, 166, 81, 0.1), rgba(206, 17, 38, 0.05)); border: 2px solid var(--primary-green); border-radius: 12px; padding: 15px; animation: fadeIn 0.8s ease-out both; }
+        .product-card[data-operator="VODAFONE"] { grid-column: span 1; grid-row: span 2; min-height: 550px; padding: 30px; background: linear-gradient(135deg, rgba(230, 0, 0, 0.25), rgba(230, 0, 0, 0.1)) !important; border: 4px solid #E60000 !important; box-shadow: 0 0 30px rgba(230, 0, 0, 0.5) !important; transform: scale(1.05); animation: pulse-vodafone 2s infinite !important; display: flex; flex-direction: column; justify-content: space-between; }
+        .product-card[data-operator="VODAFONE"] .operator-name { font-size: 20px; color: #E60000 !important; text-shadow: 0 0 10px rgba(230, 0, 0, 0.5); white-space: normal; word-break: break-word; }
+        .product-card[data-operator="VODAFONE"] .price { font-size: 32px !important; color: #E60000 !important; font-weight: 900; }
+        .product-card[data-operator="VODAFONE"] .specs { flex-grow: 1; padding: 15px 0; }
+        .product-card[data-operator="VODAFONE"] .specs li { font-size: 11px; color: #eee; margin-bottom: 8px; }
+        .product-card[data-operator="VODAFONE"] .promo { background: #E60000 !important; color: var(--primary-gold) !important; font-size: 14px !important; padding: 15px !important; text-transform: uppercase; font-weight: 900; margin: 10px 0; }
+        .product-card[data-operator="VODAFONE"] .action-buttons { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: auto; }
+        @keyframes pulse-vodafone { 0%, 100% { box-shadow: 0 0 30px rgba(230, 0, 0, 0.5); } 50% { box-shadow: 0 0 60px rgba(230, 0, 0, 0.8); } }
+        .product-card:hover { background: linear-gradient(135deg, rgba(0, 166, 81, 0.4), rgba(206, 17, 38, 0.3)); transform: translateY(-15px) scale(1.08) rotateX(5deg) rotateZ(2deg); box-shadow: 0 30px 80px rgba(0, 166, 81, 0.6), 0 0 50px rgba(255, 215, 0, 0.5), inset 0 0 30px rgba(255, 215, 0, 0.2); animation: cardPulseWow 0.6s ease-in-out; border-color: var(--primary-gold); filter: brightness(1.3) drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
+        .product-card:hover .operator-logo { animation: logoBounceWow 0.5s ease-in-out infinite; transform: scale(1.35) rotate(15deg) drop-shadow(0 0 30px rgba(255, 215, 0, 1)); }
+        .product-card:hover .price { animation: priceFlash 0.4s ease-in-out infinite; text-shadow: 0 0 20px rgba(255, 215, 0, 0.9), 0 0 40px rgba(0, 166, 81, 0.7); color: #fff; font-size: 22px; }
+        .product-card:hover .promo { animation: promoShake 0.3s ease-in-out infinite; transform: scale(1.15); box-shadow: 0 0 30px #E60000, 0 0 60px rgba(230, 0, 0, 0.8); }
+        .product-card:hover .action-btn { animation: buttonGlow 0.4s ease-in-out infinite; }
+        .product-card[data-operator="VODAFONE"]:hover { transform: scale(1.08) translateY(-5px) !important; }
+        .product-header { border-bottom: 2px solid var(--primary-gold); padding-bottom: 10px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .operator-name { font-size: 13px; font-weight: 700; color: var(--primary-gold); }
+        .operator-link { background: var(--primary-green); color: var(--primary-gold); padding: 4px 8px; border-radius: 4px; text-decoration: none; font-size: 9px; font-weight: 700; }
+        .product-name { font-size: 11px; color: #ddd; font-weight: 600; margin-top: 4px; }
+        .price-box { background: rgba(0, 166, 81, 0.2); border: 2px solid var(--primary-green); border-radius: 8px; padding: 10px; margin: 10px 0; text-align: center; }
+        .price { font-size: 18px; color: var(--primary-gold); font-weight: 700; }
+        .specs { font-size: 10px; color: #ddd; line-height: 1.6; margin: 10px 0; }
+        .specs li { margin-left: 15px; margin-bottom: 4px; }
+        .promo { background: var(--primary-red); color: var(--primary-gold); padding: 6px; border-radius: 4px; font-size: 9px; font-weight: 700; text-align: center; margin-top: 8px; animation: pulse-intense 1.5s ease-in-out infinite; }
+        .action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+        .action-btn { padding: 8px; background: var(--primary-green); color: var(--primary-gold); border: 2px solid var(--primary-gold); border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 9px; text-decoration: none; text-align: center; display: inline-block; transition: all 0.3s; }
+        .action-btn:hover { background: var(--primary-red); }
+        .anacom-btn { grid-column: 1 / -1; background: linear-gradient(135deg, var(--primary-gold), #cc9900); color: #000; }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.9); z-index: 1000; overflow-y: auto; padding: 20px; }
+        .modal.active { display: flex; justify-content: center; align-items: center; }
+        .modal-content { background: linear-gradient(135deg, rgba(0, 166, 81, 0.15), rgba(206, 17, 38, 0.1)); border: 3px solid var(--primary-gold); border-radius: 12px; padding: 30px; max-width: 600px; width: 100%; max-height: 90vh; overflow-y: auto; }
+        .modal-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid var(--primary-gold); padding-bottom: 15px; }
+        .modal-header h2 { font-size: 24px; color: var(--primary-gold); margin-bottom: 8px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 11px; color: var(--primary-gold); font-weight: 700; margin-bottom: 6px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; background: rgba(0, 166, 81, 0.1); border: 2px solid var(--primary-green); border-radius: 6px; color: #fff; font-size: 11px; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-gold); background: rgba(0, 166, 81, 0.2); }
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 10px 0; }
+        .checkbox-item { display: flex; align-items: center; gap: 8px; }
+        .checkbox-item input { width: auto; }
+        .form-actions { display: flex; gap: 10px; margin-top: 20px; }
+        .form-actions button { flex: 1; padding: 12px; border: none; border-radius: 6px; cursor: pointer; font-weight: 700; font-size: 11px; }
+        .btn-submit { background: linear-gradient(135deg, var(--primary-green), #06a047); color: var(--primary-gold); border: 2px solid var(--primary-gold); }
+        .btn-cancel { background: rgba(0, 166, 81, 0.1); color: var(--primary-gold); border: 2px solid var(--primary-gold); }
+        .success-message { background: rgba(0, 166, 81, 0.2); border: 2px solid var(--primary-green); color: var(--primary-gold); padding: 15px; border-radius: 6px; text-align: center; margin-bottom: 15px; display: none; }
+        .messenger-btn { position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px; background: linear-gradient(135deg, #0084ff, #0050b3); border-radius: 50%; border: 3px solid var(--primary-gold); display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 999; font-size: 24px; box-shadow: 0 5px 20px rgba(0, 132, 255, 0.4); animation: bounce-intense 3s ease-in-out infinite; }
+        .messenger-btn:hover { transform: scale(1.1); }
+        .footer { background: linear-gradient(90deg, #000, var(--primary-green), #000); border-top: 3px solid var(--primary-red); padding: 20px; text-align: center; font-size: 10px; color: #aaa; margin-top: 30px; }
+        @keyframes slideInDown { from { opacity: 0; transform: translateY(-100px) rotateX(90deg); } to { opacity: 1; transform: translateY(0) rotateX(0deg); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(40px) scale(0.8); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.7) rotate(-5deg); } to { opacity: 1; transform: scale(1) rotate(0deg); } }
+        @keyframes zoomIn { from { opacity: 0; transform: scale(0) rotateZ(10deg); } to { opacity: 1; transform: scale(1) rotateZ(0deg); } }
+        @keyframes rotateIn { from { opacity: 0; transform: rotate(-200deg) scale(0.5); } to { opacity: 1; transform: rotate(0deg) scale(1); } }
+        @keyframes pulse-intense { 0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); } 50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); } 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); } }
+        @keyframes bounce-intense { 0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 5px rgba(0, 166, 81, 0.4)); } 50% { transform: translateY(-15px) scale(1.05); filter: drop-shadow(0 0 25px rgba(0, 166, 81, 0.8)); } }
+        @keyframes cardPulseWow { 0% { transform: translateY(-15px) scale(1.08) rotateX(5deg) rotateZ(2deg); } 50% { transform: translateY(-20px) scale(1.12) rotateX(8deg) rotateZ(-2deg); } 100% { transform: translateY(-15px) scale(1.08) rotateX(5deg) rotateZ(2deg); } }
+        @keyframes logoBounceWow { 0%, 100% { transform: scale(1.35) rotate(15deg); } 50% { transform: scale(1.45) rotate(-15deg); } }
+        @keyframes priceFlash { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.7; transform: scale(1.15); color: #ffd700; } }
+        @keyframes promoShake { 0%, 100% { transform: scale(1.15) rotate(0deg); } 25% { transform: scale(1.15) rotate(-5deg); } 75% { transform: scale(1.15) rotate(5deg); } }
+        @keyframes buttonGlow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.5); } 50% { box-shadow: 0 0 30px rgba(0, 166, 81, 1), 0 0 20px rgba(255, 215, 0, 1); } }
+        @keyframes cardFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(360deg); } }
+        @media (max-width: 768px) { .products-grid, .bfcampaigns-grid, .doc-services-grid { grid-template-columns: 1fr; } .product-card[data-operator="VODAFONE"] { grid-column: 1; transform: scale(1); min-height: auto; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🖤 BLACK FRIDAY 2025 + COMPARADOR COMPLETO</h1>
+            <p>Telecomunicações Portugal</p>
+            <div class="update-badge">⏰ NOVEMBRO 2025 | MODEM RETRO SOUND | VITOR PINTO PRODUCTIONS © 2025</div>
+        </div>
+
+        <div class="controls">
+            <button class="btn black-friday" onclick="showBlackFriday()">🖤 BLACK FRIDAY</button>
+            <button class="btn documentation" onclick="showDocumentation()">📋 APOIO DOCUMENTAL</button>
+            <button class="btn active" onclick="filterProducts('all')">Todos</button>
+            <button class="btn" onclick="filterProducts('internet')">Internet</button>
+            <button class="btn" onclick="filterProducts('voz')">Voz</button>
+            <button class="btn" onclick="filterProducts('tv')">TV</button>
+            <button class="btn" onclick="filterProducts('combo')">Combos</button>
+            <button class="btn consultant" onclick="openConsultant()">💼 CONSULTA</button>
+            <button class="btn" id="musicToggle" onclick="toggleMusicLoop()">📞 MODEM SOM</button>
+        </div>
+
+        <div class="content" id="mainContent">
+            <div class="helpful-links">
+                <h3>🔗 LINKS ÚTEIS</h3>
+                <div class="helpful-links-grid">
+                    <a href="https://www.anacom.pt" target="_blank" class="btn" style="font-size: 9px;">📊 ANACOM</a>
+                    <a href="https://geo.anacom.pt/publico/home" target="_blank" class="btn" style="font-size: 9px;">📋 COBERTURAS</a>
+                    <a href="https://www.google.com/maps" target="_blank" class="btn" style="font-size: 9px;">📍 GOOGLE MAPS</a>
+                </div>
+            </div>
+            <div id="productsContainer" class="products-grid"></div>
+        </div>
+
+        <div class="footer">
+            <p><strong>© 2025 - VITOR PINTO PRODUCTIONS</strong></p>
+            <p>🇵🇹 Comparador Independente de Telecomunicações</p>
+            <p>Black Friday 2025 | Efeitos WOW | Som Modem Retro | +45 Produtos | Cores Oficiais</p>
+        </div>
+    </div>
+
+    <div id="consultantModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>💼 CONSULTA PERSONALIZADA</h2>
+                <p>Contacte-nos no Messenger</p>
+            </div>
+            <div id="successMessage" class="success-message"></div>
+            <form id="consultantForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label>Nome <span style="color: var(--primary-red);">*</span></label>
+                    <input type="text" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label>Telemóvel <span style="color: var(--primary-red);">*</span></label>
+                    <input type="tel" name="telefone" required pattern="[0-9]{9}">
+                </div>
+                <div class="form-group">
+                    <label>Email <span style="color: var(--primary-red);">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Código Postal <span style="color: var(--primary-red);">*</span></label>
+                    <input type="text" name="codigo_postal" required>
+                </div>
+                <div class="form-group">
+                    <label>Orçamento Mensal <span style="color: var(--primary-red);">*</span></label>
+                    <select name="orcamento" required>
+                        <option value="">Selecione...</option>
+                        <option value="0-20">Até 20€</option>
+                        <option value="20-40">20€ - 40€</option>
+                        <option value="40-60">40€ - 60€</option>
+                        <option value="60-100">60€ - 100€</option>
+                        <option value="100+">Acima de 100€</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Serviços</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" name="servicos" value="Internet"><label>Internet</label></div>
+                        <div class="checkbox-item"><input type="checkbox" name="servicos" value="Voz"><label>Voz</label></div>
+                        <div class="checkbox-item"><input type="checkbox" name="servicos" value="TV"><label>TV</label></div>
+                        <div class="checkbox-item"><input type="checkbox" name="servicos" value="Combo"><label>Combo</label></div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">✓ ENVIAR</button>
+                    <button type="button" class="btn-cancel" onclick="closeConsultant()">✕ CANCELAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="messenger-btn" onclick="openMessenger()">💬</div>
+
+    <script>
+        // ========== MODEM ANALÓGICO RETRO SOUND ==========
+        function playSuccessSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const now = audioContext.currentTime;
+                const osc = audioContext.createOscillator();
+                const gain = audioContext.createGain();
+                osc.connect(gain);
+                gain.connect(audioContext.destination);
+                osc.frequency.value = 523.25;
+                osc.type = 'sine';
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+                osc.start(now);
+                osc.stop(now + 0.2);
+            } catch (e) {}
+        }
+
+        function playBackgroundMusic() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const now = audioContext.currentTime;
+                
+                const sequence = [
+                    { freq: 350, dur: 0.3, vol: 0.4, type: 'sine' },
+                    { freq: 440, dur: 0.3, vol: 0.4, type: 'sine' },
+                    { freq: 0, dur: 0.2, vol: 0 },
+                    { freq: 697, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 1209, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 0, dur: 0.05, vol: 0 },
+                    { freq: 697, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 1336, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 0, dur: 0.05, vol: 0 },
+                    { freq: 770, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 1209, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 0, dur: 0.05, vol: 0 },
+                    { freq: 852, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 1336, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 0, dur: 0.05, vol: 0 },
+                    { freq: 941, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 1209, dur: 0.08, vol: 0.5, type: 'sine' },
+                    { freq: 0, dur: 0.1, vol: 0 },
+                    { freq: 1200, dur: 0.15, vol: 0.4, type: 'sine' },
+                    { freq: 0, dur: 0.05, vol: 0 },
+                    { freq: 2400, dur: 0.1, vol: 0.35, type: 'sine' },
+                    { freq: 0, dur: 0.1, vol: 0 },
+                    { freq: 1500, dur: 0.2, vol: 0.3, type: 'square' },
+                    { freq: 0, dur: 0.05, vol: 0 },
+                    { freq: 350, dur: 0.1, vol: 0.5, type: 'sine' },
+                    { freq: 440, dur: 0.1, vol: 0.5, type: 'sine' },
+                    { freq: 350, dur: 0.1, vol: 0.5, type: 'sine' }
+                ];
+
+                let time = now;
+
+                function playNote(freq, duration, volume, waveType = 'sine') {
+                    if (freq === 0) {
+                        time += duration;
+                        return;
+                    }
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    osc.frequency.value = freq;
+                    osc.type = waveType;
+                    gain.gain.setValueAtTime(volume, time);
+                    gain.gain.exponentialRampToValueAtTime(0.01, time + duration);
+                    osc.start(time);
+                    osc.stop(time + duration);
+                    time += duration;
+                }
+                sequence.forEach(note => playNote(note.freq, note.dur, note.vol, note.type));
+            } catch (e) {}
+        }
+
+        let musicLooping = false;
+        function toggleMusicLoop() {
+            const btn = document.getElementById('musicToggle');
+            musicLooping = !musicLooping;
+            btn.textContent = musicLooping ? '📞 MODEM ON' : '📞 MODEM OFF';
+            btn.classList.toggle('active');
+            playSuccessSound();
+            if (musicLooping) playMusicLoop();
+        }
+        function playMusicLoop() {
+            if (!musicLooping) return;
+            playBackgroundMusic();
+            setTimeout(playMusicLoop, 8000);
+        }
+
+        const blackFridayCampaigns = [
+            {operator: "MEO", campaign: "Black Friday Todo Novembro", discount: "Até -50%", offer: "✓ 2 cartões ilimitados\n✓ Desconto 24 meses\n✓ Routers Wifi 6\n✓ Entregas grátis", dates: "Nov completo + 3 Dez", link: "https://www.meo.pt/lpc/black-friday"},
+            {operator: "NOS", campaign: "Black Friday 2025", discount: "Grandes descontos", offer: "✓ Ofertas em todas categorias\n✓ Smartphones desconto\n✓ Pacotes reduzidos\n✓ Melhor preço garantido", dates: "28 Novembro", link: "https://www.nos.pt/black-friday"},
+            {operator: "VODAFONE", campaign: "Black Friday 2025", discount: "Promoções", offer: "✓ Pacotes Triple desconto\n✓ Tarifários especiais\n✓ Equipamentos promo\n✓ Sem contrato", dates: "28 Novembro", link: "https://www.vodafone.pt/black-friday.html"},
+            {operator: "DIGI", campaign: "Promoção Especial", discount: "Super competitivo", offer: "✓ Fibra 1Gbps 10€\n✓ Combos atrativos\n✓ Sem contrato\n✓ Preço garantido", dates: "Período Promo", link: "https://www.digi.pt"},
+            {operator: "NOWO", campaign: "Black Friday 2025", discount: "Sem pagamento até Jan", offer: "✓ NET+TV desconto\n✓ 1ª mensalidade GRÁTIS\n✓ Pagamentos Janeiro\n✓ Routers inclusos", dates: "28 Novembro", link: "https://www.nowo.pt/black-friday/"},
+            {operator: "AMIGO", campaign: "Promoção Novembro", discount: "Cartões promo", offer: "✓ 100GB por 8€\n✓ Ilimitado 10€\n✓ Combos desconto\n✓ Dados acumulam", dates: "Nov completo", link: "https://www.amigo.pt"},
+            {operator: "WOO", campaign: "Black Friday", discount: "Ofertas especiais", offer: "✓ 100GB 8€\n✓ Combos Fibra+Móvel 25€\n✓ Sem contrato\n✓ Portabilidade grátis", dates: "Novembro", link: "https://www.woo.pt"},
+            {operator: "UZO", campaign: "Promoção Novembro", discount: "Preços reduzidos", offer: "✓ 200GB acumulável 10€\n✓ Combos reduzidos\n✓ Sem fidelização\n✓ Dados rolantes", dates: "Novembro", link: "https://www.uzo.pt"},
+            {operator: "YORN", campaign: "Novembro promo", discount: "Ofertas especiais", offer: "✓ Net 1Gbps 24,99€\n✓ Móvel 6GB 10,99€\n✓ Combos -15%\n✓ 24/7 support", dates: "Novembro", link: "https://www.yorn.pt"}
+        ];
+
+        const documentationServices = [
+            {title: "📋 Análise de Contrato", description: "Revisamos seu contrato", items: ["Análise cláusulas", "Penalidades", "Direitos cliente", "Custo-benefício"]},
+            {title: "💰 Renegociação Tarifa", description: "Melhores preços", items: ["Revisão preços", "Descontos", "Remover taxas", "Upgrade"]},
+            {title: "📄 Gestão Rescisão", description: "Apoio completo", items: ["Multas", "Documentação", "Jurídico", "Direitos"]},
+            {title: "🔄 Migração Operador", description: "Transferência segura", items: ["Portabilidade", "Dados", "Cancelamento", "Ativação"]},
+            {title: "📊 Auditoria Fatura", description: "Verificação erros", items: ["Análise itens", "Erros", "Recuperação", "Redução"]},
+            {title: "⚖️ Proteção Direitos", description: "Defesa direitos", items: ["ANACOM", "Jurídico", "Mediação", "Valores"]}
+        ];
+
+        const products = [
+            {operator: "MEO", link: "https://www.meo.pt", name: "Internet 1 Gbps", category: "internet", price: "29,99€", specs: ["Fibra FTTH", "Router Wifi 6", "Ultra rápida"], promo: "-50%"},
+            {operator: "MEO", link: "https://www.meo.pt", name: "Voz 200GB", category: "voz", price: "9,99€", specs: ["Ilimitado", "SMS ilimitados", "200GB"]},
+            {operator: "MEO", link: "https://www.meo.pt", name: "TV Família", category: "tv", price: "25,99€", specs: ["+150 Canais", "Gravação", "VOD"]},
+            {operator: "MEO", link: "https://www.meo.pt", name: "Combo Triple", category: "combo", price: "42,49€", specs: ["Net 1Gbps", "Voz", "TV 150ch"]},
+            {operator: "MEO", link: "https://www.meo.pt", name: "Combo Premium", category: "combo", price: "69,99€", specs: ["Net 1Gbps", "Voz", "TV 4K"]},
+            {operator: "MEO", link: "https://www.meo.pt", name: "Combo Elite", category: "combo", price: "89,99€", specs: ["Net 1Gbps", "Voz Premium", "TV 4K MAX"]},
+            {operator: "NOS", link: "https://www.nos.pt", name: "Internet 1 Gbps", category: "internet", price: "34,49€", specs: ["Fibra", "Router", "Congelado 2025"]},
+            {operator: "NOS", link: "https://www.nos.pt", name: "Voz 5GB", category: "voz", price: "8,99€", specs: ["Ilimitado", "SMS ilimitados", "5GB"]},
+            {operator: "NOS", link: "https://www.nos.pt", name: "TV Premium", category: "tv", price: "34,49€", specs: ["+180 Canais", "Gravação", "4K"]},
+            {operator: "NOS", link: "https://www.nos.pt", name: "Combo Triple", category: "combo", price: "42,49€", specs: ["Net 1Gbps", "Voz", "TV 180ch"]},
+            {operator: "NOS", link: "https://www.nos.pt", name: "Combo Plus", category: "combo", price: "74,99€", specs: ["Net 1Gbps", "Voz", "TV 4K"]},
+            {operator: "NOS", link: "https://www.nos.pt", name: "Combo Elite", category: "combo", price: "94,99€", specs: ["Net 1Gbps", "Voz Ilimitado", "TV 4K MAX"]},
+            {operator: "VODAFONE", link: "https://www.vodafone.pt", name: "Internet 1 Gbps", category: "internet", price: "29,50€", specs: ["Fibra", "Modem", "Sem contrato"]},
+            {operator: "VODAFONE", link: "https://www.vodafone.pt", name: "Voz 5GB", category: "voz", price: "7,99€", specs: ["Ilimitado", "SMS ilimitados", "5GB"]},
+            {operator: "VODAFONE", link: "https://www.vodafone.pt", name: "TV 140 Canais", category: "tv", price: "29,50€", specs: ["+140 Canais", "Gravação", "HD"]},
+            {operator: "VODAFONE", link: "https://www.vodafone.pt", name: "Combo RED", category: "combo", price: "39,99€", specs: ["Net 500M", "Voz", "TV 140ch"]},
+            {operator: "VODAFONE", link: "https://www.vodafone.pt", name: "Combo Plus", category: "combo", price: "64,99€", specs: ["Net 1Gbps", "Voz", "TV 4K"]},
+            {operator: "VODAFONE", link: "https://www.vodafone.pt", name: "Combo Max", category: "combo", price: "84,99€", specs: ["Net 1Gbps", "Voz Ilimitado", "TV 4K Premium"]},
+            {operator: "DIGI", link: "https://www.digi.pt", name: "Internet 1 Gbps", category: "internet", price: "10,00€", specs: ["Fibra FTTH", "Super rápida", "Grátis"], promo: "MELHOR PREÇO"},
+            {operator: "DIGI", link: "https://www.digi.pt", name: "Internet 10 Gbps", category: "internet", price: "15,00€", specs: ["Fibra 10Gbps", "Ultrarrápida", "Premium"]},
+            {operator: "DIGI", link: "https://www.digi.pt", name: "Combo Internet+TV", category: "combo", price: "26,00€", specs: ["Net 1Gbps", "50GB móvel", "60ch TV"]},
+            {operator: "DIGI", link: "https://www.digi.pt", name: "Combo Plus", category: "combo", price: "49,99€", specs: ["Net 1Gbps", "Voz", "TV 100ch"]},
+            {operator: "DIGI", link: "https://www.digi.pt", name: "Combo Pro", category: "combo", price: "69,99€", specs: ["Net 10Gbps", "Voz Premium", "TV 4K"]},
+            {operator: "NOWO", link: "https://www.nowo.pt", name: "Internet 1 Gbps", category: "internet", price: "20,99€", specs: ["Fibra", "Router Wifi 5", "Sem taxa"]},
+            {operator: "NOWO", link: "https://www.nowo.pt", name: "Combo Triple", category: "combo", price: "45,99€", specs: ["Net 1Gbps", "Voz", "TV"]},
+            {operator: "NOWO", link: "https://www.nowo.pt", name: "Combo Plus", category: "combo", price: "59,99€", specs: ["Net 1Gbps", "Voz", "TV 4K"]},
+            {operator: "NOWO", link: "https://www.nowo.pt", name: "Combo Elite", category: "combo", price: "79,99€", specs: ["Net 1Gbps", "Voz Premium", "TV 4K MAX"]},
+            {operator: "AMIGO", link: "https://www.amigo.pt", name: "Móvel 100GB", category: "voz", price: "8,00€", specs: ["100GB Dados", "5.000min/SMS", "Acumula dados"]},
+            {operator: "AMIGO", link: "https://www.amigo.pt", name: "Móvel Ilimitado", category: "voz", price: "10,00€", specs: ["Ilimitado", "Ilimitado nacional", "Prioridade"]},
+            {operator: "AMIGO", link: "https://www.amigo.pt", name: "Combo 2 Linhas", category: "combo", price: "18,00€", specs: ["2x 100GB", "Ilimitado", "SMS ilimitados"]},
+            {operator: "AMIGO", link: "https://www.amigo.pt", name: "Combo Plus", category: "combo", price: "35,00€", specs: ["2x Ilimitado", "Compartilhado", "Máxima prioridade"]},
+            {operator: "WOO", link: "https://www.woo.pt", name: "Móvel 100GB", category: "voz", price: "8,00€", specs: ["100GB Dados", "2.500min/SMS", "Sem fidelização"]},
+            {operator: "WOO", link: "https://www.woo.pt", name: "Combo Fibra+Móvel", category: "combo", price: "25,00€", specs: ["Fibra 1Gbps", "Móvel 100GB", "Sem contrato"]},
+            {operator: "WOO", link: "https://www.woo.pt", name: "Combo Plus", category: "combo", price: "44,99€", specs: ["Fibra 1Gbps", "Móvel Ilimitado", "Sem contrato"]},
+            {operator: "WOO", link: "https://www.woo.pt", name: "Combo Max", category: "combo", price: "64,99€", specs: ["Fibra 1Gbps", "Móvel Ilimitado", "TV 80ch"]},
+            {operator: "UZO", link: "https://www.uzo.pt", name: "Móvel 200GB", category: "voz", price: "10,00€", specs: ["200GB Acumulável", "Ilimitado", "Rede MEO"]},
+            {operator: "UZO", link: "https://www.uzo.pt", name: "Combo Triple", category: "combo", price: "35,00€", specs: ["Fibra 1Gbps", "Móvel 200GB", "70ch TV"]},
+            {operator: "UZO", link: "https://www.uzo.pt", name: "Combo Plus", category: "combo", price: "54,99€", specs: ["Fibra 1Gbps", "Móvel Ilimitado", "TV 100ch"]},
+            {operator: "UZO", link: "https://www.uzo.pt", name: "Combo Elite", category: "combo", price: "74,99€", specs: ["Fibra 1Gbps", "Móvel Ilimitado", "TV 4K"]},
+            {operator: "YORN", link: "https://www.yorn.pt", name: "Internet 1 Gbps", category: "internet", price: "24,99€", specs: ["Fibra", "Router Wifi 5", "24h support"]},
+            {operator: "YORN", link: "https://www.yorn.pt", name: "Móvel 6GB", category: "voz", price: "10,99€", specs: ["6GB Dados", "Ilimitado", "Roaming EU"]},
+            {operator: "YORN", link: "https://www.yorn.pt", name: "Combo Triple", category: "combo", price: "48,99€", specs: ["Fibra 1Gbps", "Móvel 10GB", "TV 100ch"]},
+            {operator: "YORN", link: "https://www.yorn.pt", name: "Combo Plus", category: "combo", price: "69,99€", specs: ["Fibra 1Gbps", "Móvel Ilimitado", "TV 4K"]},
+            {operator: "YORN", link: "https://www.yorn.pt", name: "Combo Max", category: "combo", price: "89,99€", specs: ["Fibra 1Gbps", "Móvel Ilimitado", "TV 4K Premium"]}
+        ];
+
+        const operatorLogos = {
+            "MEO": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%23009946' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='20' font-weight='900' fill='%23FFFFFF'%3EMEO%3C/text%3E%3C/svg%3E`,
+            "NOS": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%23E41E1E' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='20' font-weight='900' fill='%23FFFFFF'%3ENOS%3C/text%3E%3C/svg%3E`,
+            "VODAFONE": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%23E60000' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='16' font-weight='900' fill='%23FFFFFF' letter-spacing='1'%3EVODAFONE%3C/text%3E%3C/svg%3E`,
+            "DIGI": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%23FF6600' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='20' font-weight='900' fill='%23FFFFFF'%3EDIGI%3C/text%3E%3C/svg%3E`,
+            "NOWO": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%231C1C1C' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='20' font-weight='900' fill='%2300D9FF'%3ENOWO%3C/text%3E%3C/svg%3E`,
+            "AMIGO": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%230058C4' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='18' font-weight='900' fill='%23FFFFFF'%3EAMIGO%3C/text%3E%3C/svg%3E`,
+            "WOO": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%23943EFF' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='20' font-weight='900' fill='%23FFFFFF'%3EWOO%3C/text%3E%3C/svg%3E`,
+            "UZO": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%23001F3F' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='20' font-weight='900' fill='%2300FF00'%3EUZO%3C/text%3E%3C/svg%3E`,
+            "YORN": `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60' viewBox='0 0 100 60'%3E%3Crect fill='%23003DA5' width='100' height='60' rx='4'/%3E%3Ctext x='50' y='38' text-anchor='middle' font-size='20' font-weight='900' fill='%23FFFFFF'%3EYORN%3C/text%3E%3C/svg%3E`
+        };
+
+        function renderProducts(filter = 'all') {
+            const mainContent = document.getElementById('mainContent');
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            mainContent.innerHTML = `
+                <div class="helpful-links">
+                    <h3>🔗 LINKS ÚTEIS</h3>
+                    <div class="helpful-links-grid">
+                        <a href="https://www.anacom.pt" target="_blank" class="btn" style="font-size: 9px;">📊 ANACOM</a>
+                        <a href="https://geo.anacom.pt/publico/home" target="_blank" class="btn" style="font-size: 9px;">📋 COBERTURAS</a>
+                        <a href="https://www.google.com/maps" target="_blank" class="btn" style="font-size: 9px;">📍 GOOGLE MAPS</a>
+                    </div>
+                </div>
+                <div class="products-grid" id="productsGrid"></div>
+            `;
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = filtered.map((prod, idx) => `
+                <div class="product-card wow fadeInUp" data-operator="${prod.operator}" style="animation-delay: ${idx * 0.05}s">
+                    <img src="${operatorLogos[prod.operator]}" alt="${prod.operator}" class="operator-logo">
+                    <div class="product-header">
+                        <div class="operator-name">${prod.operator}</div>
+                        <a href="${prod.link}" target="_blank" class="operator-link">Site</a>
+                    </div>
+                    <div class="product-name">${prod.name}</div>
+                    <div class="price-box"><div class="price">${prod.price}/mês</div></div>
+                    <ul class="specs">${prod.specs.map(s => `<li>✓ ${s}</li>`).join('')}</ul>
+                    ${prod.promo ? `<div class="promo">${prod.promo}</div>` : ''}
+                    <div class="action-buttons">
+                        <a href="${prod.link}" target="_blank" class="action-btn">🔗 Website</a>
+                        <a href="https://www.google.com/maps/search/${encodeURIComponent(prod.operator + ' loja')}" target="_blank" class="action-btn">📍 GOOGLE MAPS</a>
+                    </div>
+                    <a href="https://geo.anacom.pt/publico/home" target="_blank" class="action-btn anacom-btn">📋 COBERTURAS</a>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(category) {
+            document.querySelectorAll('.controls .btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts(category);
+        }
+
+        function showBlackFriday() {
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = `
+                <div class="black-friday-section">
+                    <h2>🖤 BLACK FRIDAY 2025</h2>
+                    <div class="bfcampaigns-grid">
+                        ${blackFridayCampaigns.map((c, i) => `
+                            <div class="bf-card" style="animation-delay: ${i * 0.1}s">
+                                <img src="${operatorLogos[c.operator]}" alt="${c.operator}" class="bf-logo">
+                                <div class="bf-operator">${c.operator}</div>
+                                <div class="bf-discount">${c.discount}</div>
+                                <div class="bf-offer">${c.offer}</div>
+                                <div class="bf-dates">📅 ${c.dates}</div>
+                                <a href="${c.link}" target="_blank" class="bf-btn">Ver Campanha →</a>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function showDocumentation() {
+            const mainContent = document.getElementById('mainContent');
+            mainContent.innerHTML = `
+                <div class="documentation-section">
+                    <h2>📋 APOIO DOCUMENTAL</h2>
+                    <div class="doc-services-grid">
+                        ${documentationServices.map((s, i) => `
+                            <div class="doc-service-card" style="animation-delay: ${i * 0.1}s">
+                                <div class="doc-title">${s.title}</div>
+                                <div class="doc-description">${s.description}</div>
+                                <ul class="doc-list">
+                                    ${s.items.map(item => `<li>✓ ${item}</li>`).join('')}
+                                </ul>
+                                <button class="doc-btn" onclick="openConsultant()">Solicitar →</button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function openConsultant() {
+            document.getElementById('consultantModal').classList.add('active');
+            playSuccessSound();
+        }
+
+        function closeConsultant() {
+            document.getElementById('consultantModal').classList.remove('active');
+            document.getElementById('consultantForm').reset();
+            document.getElementById('successMessage').style.display = 'none';
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            const form = document.getElementById('consultantForm');
+            const formData = new FormData(form);
+            const servicos = Array.from(document.querySelectorAll('input[name="servicos"]:checked')).map(c => c.value);
+            const consultaData = {
+                nome: formData.get('nome'),
+                telefone: formData.get('telefone'),
+                email: formData.get('email'),
+                codigo_postal: formData.get('codigo_postal'),
+                orcamento: formData.get('orcamento'),
+                servicos: servicos.join(', ')
+            };
+            const mensagem = encodeURIComponent(`NOVA CONSULTA\n👤 ${consultaData.nome}\n📱 ${consultaData.telefone}\n📧 ${consultaData.email}\n📍 ${consultaData.codigo_postal}\n💰 ${consultaData.orcamento}\n🎯 ${consultaData.servicos || 'Consulta Geral'}`);
+            window.open(`https://m.me/?text=${mensagem}`, '_blank');
+            document.getElementById('successMessage').textContent = '✓ Contacte-nos no Messenger!';
+            document.getElementById('successMessage').style.display = 'block';
+            playSuccessSound();
+            setTimeout(closeConsultant, 2000);
+        }
+
+        function openMessenger() {
+            window.open(`https://m.me/`, '_blank');
+            playSuccessSound();
+        }
+
+        document.getElementById('consultantModal').addEventListener('click', function(e) {
+            if (e.target === this) closeConsultant();
+        });
+
+        renderProducts();
+    </script>
+</body>
+</html>
+
